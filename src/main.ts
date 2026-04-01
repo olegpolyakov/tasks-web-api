@@ -9,9 +9,7 @@ const {
     PORT = 3000
 } = process.env;
 
-const db = TasksDb({
-    debug: true
-});
+const db = TasksDb({ debug: true });
 
 await db.connect();
 
