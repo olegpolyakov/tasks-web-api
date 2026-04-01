@@ -1,0 +1,27 @@
+{
+  "name": "@olegpoliakov/tasks-api",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Oleg Poliakov <olegpoliakov@outlook.com>",
+  "description": "",
+  "scripts": {
+    "dev": "tsx watch ./src/main.ts",
+    "start": "tsx ./src/main.ts",
+    "lint": "eslint ./src"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "tsx": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.9.1",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@vitejs/plugin-react": "^5.1.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "typescript": "^5.9.3"
+  }
+}

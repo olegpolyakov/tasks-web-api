@@ -1,0 +1,10 @@
+{
+  "extends": "@olegpoliakov/shared/server/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+  }
+}
