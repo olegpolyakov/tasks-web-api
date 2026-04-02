@@ -1,5 +1,5 @@
 {
-  "extends": "@olegpoliakov/shared/server/tsconfig.json",
+  "extends": "@olegpoliakov/shared/server/tsconfig.base.json",
   "compilerOptions": {
     "paths": {
       "@/*": [
