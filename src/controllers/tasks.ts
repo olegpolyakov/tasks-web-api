@@ -7,27 +7,36 @@ export default ({
 }: Context) => {
     const router = Router();
 
-    router.post('/', async (req, res) => {
-        const { title, projectIds, tagIds } = req.body;
+    router.param('id', async (req, res, next, id) => {
+        const task = await Task.findById(id, { _id: true });
 
-        const task = await Task.create({
-            title,
-            completed: false,
-            projectIds,
-            tagIds
-        });
+        if (!task) {
+            return res.status(404).json({ message: 'Task not found' });
+        }
 
-        res.status(201).json(task);
+        next();
     });
-
+    
     router.get('/', async (req, res) => {
         const tasks = await Task.find().populate('tags');
 
         res.status(200).json(tasks);
     });
 
+    router.post('/', async (req, res) => {
+        const { title, tagIds } = req.body;
+
+        const task = await Task.create({
+            title,
+            completed: false,
+            tagIds
+        });
+
+        res.status(201).json(task);
+    });
+
     router.put('/:id', async (req, res) => {
-        const { title, content, completed, dueDate, priority, tagIds, projectIds } = req.body;
+        const { title, content, completed, dueDate, priority, tagIds } = req.body;
 
         const task = await Task.findByIdAndUpdate(req.params.id, {
             title,
@@ -35,8 +44,7 @@ export default ({
             content,
             dueDate,
             priority,
-            tagIds,
-            projectIds
+            tagIds
         }, { new: true }).populate('tags');
 
         res.status(200).json(task);
@@ -53,11 +61,9 @@ export default ({
     });
 
     router.delete('/:id', async (req, res) => {
-        const { id } = req.params;
+        const task = await Task.findByIdAndDelete(req.params.id);
 
-        await Task.findByIdAndDelete(id);
-
-        res.status(204).send({ id });
+        res.status(204).send({ id: task });
     });
 
     return router;

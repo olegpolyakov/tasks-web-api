@@ -1,25 +1,34 @@
-import Server from '@olegpoliakov/server';
-import TasksDb from '@olegpoliakov/tasks-db';
+import Server from '@olegpolyakov/server';
+import TasksDb from '@olegpolyakov/tasks/db';
 
-import api from './api.ts';
 import type Context from './context.ts';
+import Router from './router.ts';
 
 const {
     HOST = 'localhost',
-    PORT = 3000
+    PORT = 3000,
+    SESSION_SECRET = 'tasks-session-secret',
+    DB_CONNECTION_STRING = ''
 } = process.env;
 
-const db = TasksDb({ debug: true });
+const tasksDb = TasksDb(DB_CONNECTION_STRING, { debug: true });
 
-await db.connect();
+await tasksDb.connect();
 
 const context: Context = {
-    db,
-    models: db.models
+    models: tasksDb.models
 };
 
-Server()
-    .use(api(context))
-    .listen(PORT, () => {
-        console.log(`Server is running on ${HOST}:${PORT}`);
+Server({
+    host: HOST,
+    port: PORT,
+    json: true,
+    cors: true,
+    session: {
+        secret: SESSION_SECRET
+    }
+})
+    .use('/api', Router(context))
+    .start(() => {
+        console.info(`Server is running on ${HOST}:${PORT}`);
     });

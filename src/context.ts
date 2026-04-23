@@ -1,9 +1,8 @@
-import type { Db, Models } from '@olegpoliakov/db';
-import { Schemas } from '@olegpoliakov/tasks-db';
+import type { Models } from '@olegpolyakov/db';
+import { Schemas as TaskSchemas } from '@olegpolyakov/tasks/db';
 
-type Context = {
-    db: Db<Schemas>;
-    models: Models<Schemas>;
+export type Context = {
+    models: Models<TaskSchemas>;
 };
 
 export default Context;
