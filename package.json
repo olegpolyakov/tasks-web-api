@@ -10,13 +10,12 @@
     "lint": "eslint ./src"
   },
   "dependencies": {
-    "@olegpolyakov/server": "^0.2.0",
+    "@olegpolyakov/backend": "^0.4.1",
+    "@olegpolyakov/db": "^0.4.0",
     "express": "^5.2.1",
     "tsx": "^4.21.0"
   },
   "devDependencies": {
-    "@olegpolyakov/backend": "^0.1.0",
-    "@olegpolyakov/db": "^0.1.0",
     "@types/express": "^5.0.6",
     "@types/node": "^24.9.1",
     "@typescript-eslint/eslint-plugin": "^8.53.1",
