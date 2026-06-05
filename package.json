@@ -12,6 +12,8 @@
   "dependencies": {
     "@olegpolyakov/backend": "^0.4.1",
     "@olegpolyakov/db": "^0.4.0",
+    "@olegpolyakov/tasks-core": "github:olegpolyakov/tasks-core",
+    "@olegpolyakov/tasks-db": "github:olegpolyakov/tasks-db",
     "express": "^5.2.1",
     "tsx": "^4.21.0"
   },
