@@ -1,5 +1,5 @@
 {
-  "name": "@olegpolyakov/tasks-api",
+  "name": "@olegpolyakov/tasks-web-api",
   "version": "1.0.0",
   "type": "module",
   "author": "Oleg Poliakov <olegpoliakov@outlook.com>",
